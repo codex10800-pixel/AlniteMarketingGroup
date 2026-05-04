@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('true', '1', 'yes')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'build-time-fallback-key-change-in-production')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'build-time-fallback-key-change-in-production'
 
 # Only validate SECRET_KEY in production runtime (not during build)
 if SECRET_KEY == 'build-time-fallback-key-change-in-production' and not DEBUG and os.environ.get('RENDER'):
