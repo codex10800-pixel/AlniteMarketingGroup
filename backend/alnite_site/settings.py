@@ -81,16 +81,9 @@ WSGI_APPLICATION = 'alnite_site.wsgi.application'
 import os
 import dj_database_url
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-
-if not DATABASE_URL:
-    raise Exception("DATABASE_URL is NOT set on Render")
-
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL)
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
-print("DATABASE_URL =", os.environ.get("DATABASE_URL"))
-
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
