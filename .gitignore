@@ -21,6 +21,3 @@ staticfiles/
 .vscode/
 *.log
 .DS_Store
-
-# Render deployment
-render.yaml
