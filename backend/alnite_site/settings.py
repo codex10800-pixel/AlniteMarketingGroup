@@ -26,8 +26,8 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('true', '1', 'yes')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'build-time-fallback-key-change-in-production')
 
-# Validate SECRET_KEY is properly set (except during build time)
-if SECRET_KEY == 'build-time-fallback-key-change-in-production' and not DEBUG:
+# Only validate SECRET_KEY in production runtime (not during build)
+if SECRET_KEY == 'build-time-fallback-key-change-in-production' and not DEBUG and os.environ.get('RENDER'):
     raise ValueError('DJANGO_SECRET_KEY environment variable must be set in production!')
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
