@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') or 'build-time-fallback-key-cha
 if SECRET_KEY == 'build-time-fallback-key-change-in-production' and not DEBUG and os.environ.get('RENDER'):
     raise ValueError('DJANGO_SECRET_KEY environment variable must be set in production!')
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
+ALLOWED_HOSTS = ['*']  # Update this in production to specify allowed hosts
 
 
 # Application definition
