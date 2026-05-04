@@ -84,11 +84,12 @@ import dj_database_url
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 if not DATABASE_URL:
-    raise ValueError("DATABASE_URL is missing in environment variables!")
+    raise Exception("DATABASE_URL is NOT set on Render")
 
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL)
 }
+print("DATABASE_URL =", os.environ.get("DATABASE_URL"))
 
 
 # Password validation
